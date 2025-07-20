@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IG Exchange - Fast Money Transfers to Cameroon</title>
+  <style>
+    :root {
+      --color-primary: #1e3a8a;
+      --color-secondary: #ff4c3b;
+      --color-bg-light: #ffffff;
+      --color-bg-dark: #121212;
+      --color-text-light: #333;
+      --color-text-dark: #eee;
+      --color-box-shadow-light: rgba(0,0,0,0.07);
+      --color-box-shadow-dark: rgba(255,255,255,0.1);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--color-bg-light);
+      color: var(--color-text-light);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark {
+      background: var(--color-bg-dark);
+      color: var(--color-text-dark);
+    }
+
+    header {
+      background: radial-gradient(circle at top left, var(--color-primary), #00091a);
+      color: white;
+      padding: 12px 0;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(30,58,138,0.6);
+      position: relative;
+    }
+
+    /* Dark mode toggle button */
+    #dark-mode-toggle {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    #dark-mode-toggle:hover {
+      color: var(--color-secondary);
+    }
+
+    nav a {
+      color: white;
+      margin: 0 14px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      display: inline-block;
+      padding: 6px 0;
+    }
+    nav a:hover {
+      color: var(--color-secondary);
+      text-shadow: 0 0 6px var(--color-secondary);
+    }
+
+    .hero {
+      background: #f9fafb;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 3px solid var(--color-primary);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark .hero {
+      background: #1f1f1f;
+      color: var(--color-text-dark);
+      border-color: var(--color-secondary);
+      box-shadow: 0 4px 10px rgba(255,76,59,0.3);
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 2.4rem;
+      text-shadow: 1px 1px 3px rgba(30,58,138,0.5);
+      transition: color 0.3s ease;
+    }
+    body.dark .hero h1 {
+      color: var(--color-secondary);
+      text-shadow: 1px 1px 5px rgba(255,76,59,0.7);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #444;
+      max-width: 600px;
+      margin: auto;
+      transition: color 0.3s ease;
+    }
+    body.dark .hero p {
+      color: #ccc;
+    }
+
+    .btn {
+      background: #f5f5f0;
+      color: var(--color-primary);
+      padding: 12px 28px;
+      border: 2px solid var(--color-primary);
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 22px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(30,58,138,0.3);
+      transition: background 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .btn:hover {
+      background: #e6e6d9;
+      box-shadow: 0 6px 12px rgba(30,58,138,0.45);
+      color: #00306e;
+    }
+    body.dark .btn {
+      background: #2a2a2a;
+      color: var(--color-secondary);
+      border-color: var(--color-secondary);
+      box-shadow: 0 3px 6px rgba(255,76,59,0.4);
+    }
+    body.dark .btn:hover {
+      background: #ff4c3b;
+      color: white;
+      box-shadow: 0 6px 12px rgba(255,76,59,0.8);
+    }
+
+    .container {
+      padding: 25px 20px 50px;
+      max-width: 900px;
+      margin: 30px auto;
+      background: var(--color-bg-light);
+      box-shadow: 0 6px 18px var(--color-box-shadow-light);
+      border-radius: 10px;
+      transition: box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+    body.dark .container {
+      background: #222;
+      box-shadow: 0 6px 18px var(--color-box-shadow-dark);
+      color: var(--color-text-dark);
+    }
+    .container:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    body.dark .container:hover {
+      box-shadow: 0 12px 32px rgba(255,76,59,0.3);
+    }
+
+    .section {
+      margin: 50px 0;
+    }
+
+    .section h2 {
+      color: var(--color-primary);
+      margin-bottom: 18px;
+      font-weight: 700;
+      border-bottom: 3px solid var(--color-secondary);
+      display: inline-block;
+      padding-bottom: 6px;
+      font-size: 1.8rem;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    body.dark .section h2 {
+      color: var(--color-secondary);
+      border-color: var(--color-primary);
+    }
+
+    .section h3 {
+      color: #004080;
+      margin-top: 30px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+    }
+    body.dark .section h3 {
+      color: #ffb3a0;
+    }
+
+    p, ol, li {
+      font-size: 1rem;
+      color: #444;
+      transition: color 0.3s ease;
+    }
+    body.dark p, body.dark ol li {
+      color: #ddd;
+    }
+
+    ol li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 18px 10px;
+      margin-top: 60px;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      user-select: none;
+      box-shadow: inset 0 3px 5px rgba(255,255,255,0.1);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark footer {
+      background: #222;
+      color: var(--color-secondary);
+      box-shadow: inset 0 3px 5px rgba(255,76,59,0.2);
+    }
+
+    /* Currency Converter */
+    .converter {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .converter label {
+      font-weight: 600;
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      color: var(--color-text-light);
+      transition: color 0.3s ease;
+    }
+    body.dark .converter label {
+      color: var(--color-text-dark);
+    }
+    .converter input, .converter select {
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      width: 100%;
+      max-width: 320px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      background: white;
+      color: #333;
+    }
+    body.dark .converter input, body.dark .converter select {
+      background: #333;
+      color: var(--color-text-dark);
+      border-color: #555;
+      box-shadow: none;
+    }
+    .converter input:focus, .converter select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 8px rgba(30,58,138,0.3);
+    }
+    body.dark .converter input:focus, body.dark .converter select:focus {
+      border-color: var(--color-secondary);
+      box-shadow: 0 0 8px rgba(255,76,59,0.5);
+    }
+
+    .converter-result {
+      font-weight: 700;
+      margin-top: 18px;
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      min-height: 1.4em;
+      user-select: text;
+      transition: color 0.3s ease;
+    }
+    body.dark .converter-result {
+      color: var(--color-secondary);
+    }
+
+    /* Partners */
+    .partner-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .partner-logos img {
+      height: 50px;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
+      transition: transform 0.25s ease, filter 0.25s ease;
+      cursor: default;
+      border-radius: 4px;
+      background: #fff;
+      padding: 6px;
+    }
+    body.dark .partner-logos img {
+      background: #222;
+      filter: drop-shadow(0 0 3px rgba(255,76,59,0.7));
+    }
+
+    .partner-logos img:hover {
+      transform: scale(1.12);
+      filter: drop-shadow(0 0 5px var(--color-secondary));
+    }
+
+    /* Live Rates Table */
+    #live-rates {
+      margin-bottom: 40px;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 18px var(--color-box-shadow-light);
+      border-radius: 8px;
+      overflow: hidden;
+      user-select: none;
+      background: var(--color-bg-light);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.dark #live-rates {
+      box-shadow: 0 4px 18px var(--color-box-shadow-dark);
+      background: #222;
+      color: var(--color-text-dark);
+    }
+
+    #live-rates caption {
+      caption-side: top;
+      font-weight: 700;
+      font-size: 1.5rem;
+      padding: 12px 0;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      color: white;
+      letter-spacing: 0.06em;
+      box-shadow: inset 0 -3px 6px rgba(0,0,0,0.2);
+    }
+
+    #live-rates th, #live-rates td {
+      padding: 12px 20px;
+      text-align: center;
+      background: #f9fafb;
+      border-bottom: 1px solid #ddd;
+      font-weight: 600;
+      color: var(--color-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    body.dark #live-rates th, body.dark #live-rates td {
+      background: #222;
+      color: var(--color-text-dark);
+      border-color: #555;
+    }
+
+    #live-rates tbody tr:hover td {
+      background-color: #ffebe6;
+      color: var(--color-secondary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    body.dark #live-rates tbody tr:hover td {
+      background-color: #ff4c3b;
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+        font-size: 1.1rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 14px 0;
+      }
+      #live-rates {
+        max-width: 100%;
+      }
+      .container {
+        margin: 20px 15px 40px;
+        padding: 20px 15px 35px;
+      }
+    }
+.staff-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.staff-member {
+  max-width: 220px;
+  text-align: center;
+  color: var(--color-text-light);
+  transition: color 0.3s ease;
+}
+
+body.dark .staff-member {
+  color: var(--color-text-dark);
+}
+
+.staff-member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%; /* Circular images */
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 4px 10px rgba(30,58,138,0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .staff-member img {
+  border-color: var(--color-secondary);
+  box-shadow: 0 4px 10px rgba(255,76,59,0.5);
+}
+
+.staff-member h3 {
+  margin: 12px 0 6px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.staff-member p {
+  margin: 2px 0;
+  font-size: 1rem;
+}
+    .circle-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #333;
+    }
+
+
+
+  </style>
+ 
+
+</head>
+<body>
+
+  <header>
+    <h1>IG Exchange</h1>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#how">How It Works</a>
+      <a href="#services">Services</a>
+      <a href="#converter">Currency Converter</a>
+      <a href="#partners">Partners</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Fast, Secure Money Transfers to Cameroon</h1>
+    <p>Send money to your loved ones through MTN MoMo or Orange Money with ease and confidence.</p>
+    <a class="btn" href="https://wa.me/237676984297" target="_blank" rel="noopener noreferrer">Connect on Whatsapp</a>
+  </div>
+
+  <div class="container">
+
+    <div id="about" class="section">
+      <h2>About IG Exchange</h2>
+      <p>IG Exchange is your trusted mobile money agent in Cameroon. We specialize in receiving international transfers from Africans abroad and delivering funds instantly to recipients via MTN and Orange Mobile Money services.</p>
+    </div>
+
+    <div id="how" class="section">
+      <h2>How It Works</h2>
+      <ol>
+        <li>We offer low rates money transfer services.</li>
+        <li>You send funds through crypto currency or bank dposits (we'll guide you).</li>
+        <li>You WhatsApp us the receipt and recipient details.</li>
+        <li>We transfer the money within minutes to MTN/Orange accounts in Cameroon.</li>
+        <li>You and your recipient receive confirmation immediately.</li>
+      </ol>
+    </div>
+
+    <div id="services" class="section">
+      <h2>Other Services We Offer</h2>
+      <h3>Land Acquisition & Documentation</h3>
+      <p>We assist clients in acquiring land legally in Cameroon, managing all required documentation transparently.</p>
+    <img src="https://i.imgur.com/ltd2tdL.jpeg" style="width: 69vw; height:auto;">
+
+
+      <h3>Project Management</h3>
+      <p>We oversee your construction or development projects from start to finish.</p>
+      <img src="https://i.imgur.com/ShUEnD4.jpeg" style="width: 69vw; height:auto;">
+
+      <h3>Building & Construction</h3>
+      <p>We offer full building solutions—from foundation to finish, ensuring structural integrity and modern design.</p>
+     <img src="https://i.imgur.com/0SEJaX2.jpeg" style="width: 69vw; height:auto;">
+
+    </div>
+
+    <div id="live-exchange-rates" class="section">
+      <table id="live-rates" aria-label="Live exchange rates from various currencies to Central African CFA franc (XAF)">
+        <caption>Daily Exchange Rates to FCFA</caption>
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>Rate (1 unit = FCFA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>USD</td><td id="rate-usd">Loading...</td></tr>
+          <tr><td>CAD</td><td id="rate-cad">Loading...</td></tr>
+          <tr><td>EUR</td><td id="rate-eur">Loading...</td></tr>
+          <tr><td>GBP</td><td id="rate-gbp">Loading...</td></tr>
+          <tr><td>USDT</td><td id="rate-usdt">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="converter" class="section converter" aria-label="Currency converter from various currencies to Central African CFA franc (XAF)">
+      <h2>Currency Converter</h2>
+      <label for="currency-select">Select Currency</label>
+      <select id="currency-select" aria-controls="converted-amount">
+        <option value="USD" selected>US Dollar (USD)</option>
+        <option value="CAD">Canadian Dollar (CAD)</option>
+        <option value="EUR">Euro (EUR)</option>
+        <option value="GBP">British Pound (GBP)</option>
+        <option value="USDT">Tether (USDT)</option>
+      </select>
+      <label for="amount-input">Enter Amount</label>
+      <input
+        type="number"
+        id="amount-input"
+        min="0"
+        step="0.01"
+        placeholder="0.00"
+        aria-describedby="converted-amount"
+      />
+      <div id="converted-amount" class="converter-result" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+    <div id="partners" class="section">
+      <h2>Our Trusted Partners</h2>
+      <div class="partner-logos">
+        <img src="https://logo.clearbit.com/wise.com" alt="Wise" loading="lazy" />
+        <img src="https://logo.clearbit.com/payoneer.com" alt="Payoneer" loading="lazy" />
+        <img src="https://logo.clearbit.com/binance.com" alt="Binance" loading="lazy" />
+        <img src="https://logo.clearbit.com/mtn.com" alt="MTN" loading="lazy" />
+        <img
+          src="https://logo.clearbit.com/orange.cm"
+          alt="Orange Cameroon Logo"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://via.placeholder.com/120x50?text=Orange';"
+        />
+      </div>
+    </div>
+<div id="staff" class="section">
+  <h2>Our Staff</h2>s
+  <div class="staff-members">
+    <div class="staff-member">
+      <img src="https://i.imgur.com/tN8eT3C.jpeg" />
+      <h3>Tech And Marketting Lead: Priceless Sheutang</h3>
+      <p>Email: psheutang@gmail.com</p>
+      <p>Phone: +237 652796507</p>
+    </div>
+    <div class="staff-member">
+      <img src="https://i.imgur.com/oael68J.jpeg" />
+      <h3>Director of Financial Transactions: Kwagoh ignatius</h3>
+      <p>Email: kwangoigna2012@gmail.com</p>
+      <p>Phone: +237 676984297</p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <footer id="contact">
+    &copy; 2025 IG Exchange. All rights reserved. <br />
+    Contact us: <a href="mailto:contact@igexchange.cm" style="color:#ff4c3b;">kwangoigna2012@gmail.com</a>
+  </footer>
+
+  <script>
+    // Rates - You can replace this with a real API call if you want live data
+    const rates = {
+      USD: 700,
+      CAD: 500,
+      EUR: 690,
+      GBP: 800,
+      USDT: 785 // pegged to USD for this example
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate live rates table
+      for (const [currency, rate] of Object.entries(rates)) {
+        const el = document.getElementById('rate-' + currency.toLowerCase());
+        if (el) el.textContent = rate.toFixed(2);
+      }
+
+      // Converter logic
+      const currencySelect = document.getElementById('currency-select');
+      const amountInput = document.getElementById('amount-input');
+      const convertedAmount = document.getElementById('converted-amount');
+
+      function convert() {
+        const currency = currencySelect.value;
+        const amount = parseFloat(amountInput.value);
+        if (isNaN(amount) || amount < 0) {
+          convertedAmount.textContent = '';
+          return;
+        }
+        const rate = rates[currency];
+        const result = amount * rate;
+        convertedAmount.textContent = `${amount.toFixed(2)} ${currency} = ${result.toFixed(0)} XAF`;
+      }
+
+      currencySelect.addEventListener('change', convert);
+      amountInput.addEventListener('input', convert);
+
+      // Dark mode toggle
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const body = document.body;
+      // Load saved preference
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark');
+        darkModeToggle.textContent = '☀️';
+      }
+
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        if (body.classList.contains('dark')) {
+          darkModeToggle.textContent = '☀️';
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          darkModeToggle.textContent = '🌙';
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
